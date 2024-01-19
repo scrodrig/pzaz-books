@@ -67,14 +67,16 @@ export default {
     this.getLastestBooks()
   },
   methods: {
-    getLastestBooks() {
-      axios.get("/api/v1/latest-books/")
+    async getLastestBooks() {
+      this.$store.commit("setIsLoading", true)
+      await axios.get("/api/v1/latest-books/")
         .then(response => {
           this.latestBooks = response.data
         })
         .catch(error => {
           console.log(error)
         })
+      this.$store.commit("setIsLoading", false)
     }
   }
 };
