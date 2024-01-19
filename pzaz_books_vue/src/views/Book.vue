@@ -45,7 +45,7 @@
 
 <script>
 import axios from "axios"
-import {toast} from "bulma-toast"
+import { toast } from "bulma-toast"
 export default {
   name: "Book",
   data() {
@@ -58,18 +58,19 @@ export default {
     this.getBook()
   },
   methods: {
-    getBook() {
-
+    async getBook() {
+      this.$store.commit("setIsLoading", true)
       const category_slug = this.$route.params.category_slug
       const book_slug = this.$route.params.book_slug
 
-      axios.get(`/api/v1/books/${category_slug}/${book_slug}`)
+      await axios.get(`/api/v1/books/${category_slug}/${book_slug}`)
         .then(response => {
           this.book = response.data
         })
         .catch(error => {
           console.log(error)
         })
+      this.$store.commit("setIsLoading", false)
     },
     addToCart() {
       if (isNaN(this.quantity) || this.quantity <= 0) {
