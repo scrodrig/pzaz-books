@@ -36,7 +36,14 @@
           </figure>
           <h3 class="is-size-4">{{ book.name }}</h3>
           <p class="is-size-6 has-text-grey">{{ book.price }}</p>
-          View Details
+
+          <router-link
+            :to="book.get_absolute_url"
+            class="button is-dark mt-4"
+          >
+            View Details
+          </router-link>
+
         </div>
       </div>
     </div>
@@ -79,7 +86,8 @@ export default {
   margin-left: -1.25rem;
   margin-right: -1.25rem;
 }
-.resized-image{
+
+.resized-image {
   display: block;
   width: 100%;
   height: 500px;
