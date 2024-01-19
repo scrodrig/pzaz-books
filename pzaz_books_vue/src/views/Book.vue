@@ -1,7 +1,7 @@
 <template>
   <div class="page-product">
     <div class="columns is-multiline">
-      <div class="column is-9">
+      <div class="column is-5 is-flex is-justify-content-center">
         <figure class="image mb-6">
           <img
             :src="book.get_image"
@@ -9,11 +9,12 @@
             class="resized-image"
           />
         </figure>
+      </div>
+      <div class="column is-4">
         <h1 class="title">{{ book.name }}</h1>
         <p>
           {{ book.description }}
         </p>
-
       </div>
       <div class="column is-3">
         <h2 class="subtitle">Information:</h2>
@@ -31,7 +32,10 @@
             />
           </div>
           <div class="control">
-            <a class="button is-dark">Add to cart</a>
+            <a
+              class="button is-dark"
+              @click="addToCart"
+            >Add to cart</a>
           </div>
         </div>
       </div>
@@ -41,6 +45,7 @@
 
 <script>
 import axios from "axios"
+import {toast} from "bulma-toast"
 export default {
   name: "Book",
   data() {
@@ -65,6 +70,25 @@ export default {
         .catch(error => {
           console.log(error)
         })
+    },
+    addToCart() {
+      if (isNaN(this.quantity) || this.quantity <= 0) {
+        this.quantity = 1
+      }
+      const item = {
+        book: this.book,
+        quantity: this.quantity
+      }
+      this.$store.commit("addToCart", item)
+
+      toast({
+        message: `Added ${this.book.name} to cart`,
+        type: "is-success",
+        position: "bottom-right",
+        duration: 2000,
+        dismissible: true,
+        pauseOnHover: true,
+      })
     }
   }
 };
@@ -72,7 +96,7 @@ export default {
 
 <style scoped>
 .resized-image {
-  display: block;
+  /* display: block; */
   width: 100%;
   height: 100%;
 }
