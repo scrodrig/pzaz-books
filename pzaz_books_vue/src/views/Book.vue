@@ -56,6 +56,8 @@ export default {
   },
   mounted() {
     this.getBook()
+
+    document.title = "Pzaz Books | Book"
   },
   methods: {
     async getBook() {
