@@ -13,6 +13,7 @@
           aria-label="menu"
           aria-expanded="false"
           data-target="navbar-menu"
+          @click="showMobileMenu = !showMobileMenu"
         >
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
@@ -23,6 +24,7 @@
       <div
         class="navbar-menu"
         id="navbar-menu"
+        :class="{ 'is-active': showMobileMenu }"
       >
         <div class="navbar-end">
           <router-link
@@ -68,6 +70,17 @@
     </section>
   </div>
 </template>
+
+<script>
+export default {
+  name: "App",
+  data() {
+    return {
+      showMobileMenu: false,
+    };
+  },
+};
+</script>
 
 <style lang="scss">
 @import '../node_modules/bulma'
