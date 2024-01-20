@@ -24,10 +24,10 @@ To run the servers for the project, follow these steps:
 # Please note, the following
 
 > [!NOTE]  
-> I did have a hard time, trying to make the crud with uploading images, besides you could check in views, I do have the code there for a CRUD 
+> I did have a hard time, trying to make the `CRUD` with uploading images, besides you could check in `views`, I do have the code there for the task `(without images)` 
 
 > [!IMPORTANT]  
-> I decided to go one step further to create a simple flow like an e-coomerce page instead, using admin console from Django to create books, and the rest build in vue, you can create users there too.
+> I decided to go one step further to create a simple flow like an e-comerce page instead, using admin console from Django to create books, and the rest build in vue, you can create users there too, please do to see the `cart` functionallity.
 
 
 
