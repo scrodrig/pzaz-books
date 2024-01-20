@@ -66,7 +66,37 @@ class Books(APIView):
             # image=request_data["image"],
         )
         response_data = {"response": "Book created successfully"}
-        return Response(response_data, status=status.HTTP_201_OK)
+        return Response(response_data, status=status.HTTP_200_OK)
+
+    def put(self, request, id):
+        request_data = request.data
+        category_slug = request_data["category_slug"]
+        category = self.get_category(category_slug)
+
+        book = Book.objects.get(id=id)
+
+        if book is None:
+            response_data = {"response": "Book does not exists"}
+            return Response(response_data, status=status.HTTP_404_NOT_FOUND)
+
+        book.category_id = category.id if category else book.category_id
+        book.name = request_data.get("name", book.name)
+        book.slug = request_data.get("slug", book.slug)
+        book.price = request_data.get("price", book.price)
+        book.description = request_data.get("description", book.description)
+        book.save()
+        response_data = {"response": "Book updated successfully"}
+        return Response(response_data, status=status.HTTP_200_OK)
+    
+    def delete(self, request):
+        id = request.data.get('id')
+        book = Book.objects.get(id=id)
+        if book is None:
+            response_data = {"response": "Book does not exists"}
+            return Response(response_data, status=status.HTTP_404_NOT_FOUND)
+        book.delete()
+        response_data = {"response": "Book deleted successfully"}
+        return Response(response_data, status=status.HTTP_200_OK)
 
 
 @api_view(["POST"])
