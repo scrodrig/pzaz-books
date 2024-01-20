@@ -1,4 +1,4 @@
-# Pzas pzaspzaz
+# Pzas Books
 
 ## How to Run Servers
 
