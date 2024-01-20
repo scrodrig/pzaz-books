@@ -170,6 +170,9 @@ export default {
       if (this.place === '') {
         this.errors.push('The place field is missing!')
       }
+      if(!this.errors.length){
+        this.$router.push('/cart/success')
+      }
     }
   },
   computed: {
