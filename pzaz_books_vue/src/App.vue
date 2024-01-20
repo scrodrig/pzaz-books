@@ -68,7 +68,7 @@
           <div class="buttons">
             <router-link
               class="button is-light"
-              to="/login"
+              to="/log-in"
             >
               <strong>Login</strong>
             </router-link>
