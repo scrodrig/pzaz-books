@@ -9,6 +9,7 @@ import Login from "../views/Login.vue";
 import MyAccount from "@/views/MyAccount.vue";
 import Search from "../views/Search.vue";
 import SignUp from "../views/SignUp.vue";
+import Success from "../views/Success.vue";
 import store from "../store";
 
 const routes = [
@@ -48,6 +49,11 @@ const routes = [
     meta: {
       requireLogin: true,
     },
+  },
+  {
+    path: "/cart/success",
+    name: "success",
+    component: Success,
   },
   {
     path: '/cart/checkout',
