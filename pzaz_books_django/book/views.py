@@ -63,9 +63,10 @@ class Books(APIView):
             slug=request_data["slug"],
             price=request_data["price"],
             description=request_data["description"],
+            # image=request_data["image"],
         )
         response_data = {"response": "Book created successfully"}
-        return Response(response_data, status=status.HTTP_200_OK)
+        return Response(response_data, status=status.HTTP_201_OK)
 
 
 @api_view(["POST"])
