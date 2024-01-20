@@ -66,12 +66,22 @@
 
         <div class="navbar-item">
           <div class="buttons">
-            <router-link
-              class="button is-light"
-              to="/log-in"
-            >
-              <strong>Login</strong>
-            </router-link>
+            <template v-if="$store.state.isAuthenticated">
+              <router-link
+                class="button is-light"
+                to="/my-account"
+              >
+                <strong>My Account</strong>
+              </router-link>
+            </template>
+            <template v-else>
+              <router-link
+                class="button is-light"
+                to="/log-in"
+              >
+                <strong>Login</strong>
+              </router-link>
+            </template>
             <router-link
               class="button is-success"
               to="/cart"
@@ -104,7 +114,6 @@
     </section>
   </div>
 </template>
-
 <script>
 import axios from 'axios'
 export default {

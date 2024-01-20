@@ -5,8 +5,10 @@ import Cart from "../views/Cart.vue";
 import Category from "../views/Category.vue";
 import HomeView from "../views/HomeView.vue";
 import Login from "../views/Login.vue";
+import MyAccount from "@/views/MyAccount.vue";
 import Search from "../views/Search.vue";
 import SignUp from "../views/SignUp.vue";
+import store from "../store";
 
 const routes = [
   {
@@ -39,6 +41,14 @@ const routes = [
     component: SignUp,
   },
   {
+    path: "/my-account",
+    name: "myaccount",
+    component: MyAccount,
+    meta: {
+      requireLogin: true,
+    },
+  },
+  {
     path: "/log-in",
     name: "login",
     component: Login,
@@ -58,6 +68,14 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requireLogin) && !store.state.isAuthenticated) {
+    next({ name: 'login', query: { to: to.path } });
+  } else {
+    next()
+  }
 });
 
 export default router;
