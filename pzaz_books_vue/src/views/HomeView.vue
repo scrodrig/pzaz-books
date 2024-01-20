@@ -21,37 +21,20 @@
         </h2>
       </div>
 
-      <div
+      <BookBox
         class="column is-3"
         v-for="book in latestBooks"
         :key="book.id"
-      >
-        <div class="box">
-          <figure class="image mb-4">
-            <img
-              :src="book.get_thumbnail"
-              :alt="book.title"
-              class="resized-image"
-            />
-          </figure>
-          <h3 class="is-size-4">{{ book.name }}</h3>
-          <p class="is-size-6 has-text-grey">{{ book.price }}</p>
-
-          <router-link
-            :to="book.get_absolute_url"
-            class="button is-dark mt-4"
-          >
-            View Details
-          </router-link>
-
-        </div>
-      </div>
+        :book="book"
+      />
     </div>
   </div>
 </template>
 
 <script>
 import axios from "axios"
+
+import BookBox from "@/components/BookBox.vue"
 
 
 export default {
@@ -62,9 +45,11 @@ export default {
     };
   },
   components: {
+    BookBox
   },
   mounted() {
     this.getLastestBooks()
+    document.title = "Pzaz Books | Home"
   },
   methods: {
     async getLastestBooks() {
