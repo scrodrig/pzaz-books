@@ -25,6 +25,7 @@
               v-for="item in cart.items"
               :key="item.book.id"
               :initialItem="item"
+              @removeFromCart="removeFromCart"
             />
           </tbody>
         </table>
@@ -64,6 +65,11 @@ export default {
         items: [],
       }
     }
+  },
+  methods: {
+    removeFromCart(item) {
+      this.cart.items = this.cart.items.filter(i => i.book.id !== item.book.id)
+    },
   },
   mounted() {
     document.title = 'Pzaz Books - Cart'

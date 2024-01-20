@@ -28,13 +28,13 @@
               type="number"
               class="input"
               min="1"
-              :model="quantity"
+              v-model="quantity"
             />
           </div>
           <div class="control">
             <a
               class="button is-dark"
-              @click="addToCart"
+              @click="addToCart()"
             >Add to cart</a>
           </div>
         </div>
@@ -75,7 +75,7 @@ export default {
       this.$store.commit("setIsLoading", false)
     },
     addToCart() {
-      if (isNaN(this.quantity) || this.quantity <= 0) {
+      if (isNaN(this.quantity) || this.quantity < 1) {
         this.quantity = 1
       }
       const item = {
