@@ -21,13 +21,13 @@ To run the servers for the project, follow these steps:
   python manage.py runserver
   ```
 
-# Please note, the following
+# Please note the following
 
 > [!NOTE]  
-> I did have a hard time, trying to make the `CRUD` with uploading images, besides you could check in `views`, I do have the code there for the task `(without images)` 
+> I did have a hard time trying to make the `CRUD` with uploading images, besides you could check in `views`, I do have the code there for the task `(without images)` 
 
 > [!IMPORTANT]  
-> I decided to go one step further to create a simple flow like an e-comerce page instead, using admin console from Django to create books, and the rest build in vue, you can create users there too, please do to see the `cart` functionallity.
+> I decided to go one step further to create a simple flow like an e-commerce page instead, using the admin console from Django to create books and the rest build in vue, you can create users there too, please do to see the `cart` functionality.
 
 > [!TIP]
 > You can create new users, but if you don't, use: `user: admin` for `Django` or `user:guest` for `vue-app`, and password for both`password: pzaspzaz`
